@@ -1,7 +1,7 @@
-$menuBG: $primary-color;
-$menuTextColor: $white;
+$menuBG: darken($primary-color,50%);
+$menuTextColor:  $ascent-1-color;
 $menuHeight: 60px;
-$menuHoverBorderColor: $ascent-1-color;
+$menuHoverBorderColor: $secondary-color;
 
 .menuheader {
   background-color: $menuBG;
