@@ -1,39 +1,47 @@
 .infoBar {
 	color: $ascent-1-color;
 	background-color: $ascent-5-color;
-
-	h5 {
-	  margin-bottom: 5px !important;
+	.item_infobar {
+		padding: 0.5em 0;
+		transition: all 0.15s linear;
+		border-radius: 0;
+		&:hover {
+			position: relative;
+			box-sizing: border-box;
+			border-radius: 5px;
+			background-color: lighten($ascent-5-color, 10%);
+			box-shadow: 0 0 2px 0px #fff8;
+			cursor: default;
+		}
 	}
-
-	.icon_place {
-	  float: left;
-	  width: 38px;
-	  height: 100%;
-	  margin-right: 10px;
-	  margin-top: 10px;
-	  margin-bottom: 10px;
-
-	  .icon {
-		font-size: 32px;
-		line-height: 65px;
-		float: left;
-		height: 100%;
-	  }
-	}
-
+	.icon_place,
 	.text_place {
-	  float: left;
-	  width: calc(100% - 48px);
-	  margin-top: 10px;
-	  margin-bottom: 10px;
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
-
+	.icon_place {
+		width: 38px;
+		height: 100%;
+		margin-right: 5px;
+		.icon {
+			font-size: 32px;
+			line-height: 38px;
+			padding-right: 5px;
+		}
+	}
+	.text_place {
+		width: calc(100% - 48px);
+		line-height: 1;
+		* {
+			margin: 0
+		}
+	}
 	.row {
-	  padding: 0px !important;
+		padding: 0px !important;
 	}
-
 	.ui.grid {
-	  margin: 0px !important;
+		margin: 0px !important;
 	}
-  }
+}
