@@ -1,6 +1,6 @@
 import {LoadCarrinhoEventList} from "../../functions/mini_cart_generic";
 import {_alert, _confirm} from "../../functions/message";
-﻿import {isLoading} from "../api_config";
+import {isLoading} from "../api_config";
 import {SomenteNumerosPositivos} from "../../functions/form-control";
 
 $(document).on("click", ".qtdActionEventList", function(event) {
