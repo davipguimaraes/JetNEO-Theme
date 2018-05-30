@@ -1,0 +1,18 @@
+@{
+    ViewBag.Title = "É Meu primeiro hotsite";
+    Layout = "~/Views/Shared/Base/_Layout.cshtml";
+}
+
+<div class="ui container">
+    <div class="ui two column grid stackable middle aligned">
+        <div class="row">
+            <div class="column">
+                <h1>@ViewBag.Title</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ~/Views/Shared/Blocks/Group/_Groups.cshtml -->
+@Html.Action("Group", "Group")
