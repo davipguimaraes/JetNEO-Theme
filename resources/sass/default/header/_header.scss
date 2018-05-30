@@ -9,8 +9,9 @@ headlogo {
 
 ._header {
 	margin-top: 0px;
-	background-color: $secondary-color;
-	background-image: url(//digitalm3.com.br/wp-content/themes/Digital-M3-2017/assets/img/backgrounds/background-azul.jpg);
+	padding: 10px 0;
+	background-color: darken($secondary-color,10%);
+	background-image: url("/assets/image/background/background-azul.jpg");
 	&.fixed {
 		box-shadow: rgba(0, 0, 0, .3) 0px 0px 10px 0px;
 	}

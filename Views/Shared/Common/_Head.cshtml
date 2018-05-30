@@ -21,11 +21,11 @@
                 </div>
                 <div class="ui right aligned six wide mobile five wide tablet four wide computer column">
                     <div id="cartButton" class="ui labeled button cartbutton mini-cart no margin bottom" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
-                        <div class="ui basic primary button ">
+                        <div class="ui blue button ">
                             <i class="cart icon"></i>
                             <span>@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span>
                         </div>
-                        <a class="ui left pointing primary label" id="total_itens_card">
+                        <a class="ui basic left pointing blue label" id="total_itens_card">
                             @{
                                 if (Session["EventList"] == null)
                                 {

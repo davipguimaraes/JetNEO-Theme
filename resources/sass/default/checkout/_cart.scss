@@ -11,13 +11,8 @@
 	margin: -1rem;
 	margin-top: -1rem;
 	max-width: 90%;
-	min-width: 550px;
+	min-width: 350px;
 	padding: 0;
-	@media screen and (max-width: $mobile-bp) {
-		min-width: 100% !important;
-		max-width: 100% !important;
-		width: 100% !important;
-	}
 	>div.row:first-child {
 		padding: 0px;
 	}
@@ -78,16 +73,21 @@
 			}
 			&.items {
 				.item {
+					position: relative;
 					padding-right: 10px;
-					.ui.image.small {
-						width: 100px !important;
-						@media screen and (max-width: $mobile-bp) {
-							display: none;
-						}
-					}
+					padding: 10px 0;
+					margin-bottom: 15px !important;
+
 					&.detalhes {
 						padding-bottom: .7em;
 						padding-top: 0em;
+					}
+					.remover_produto {
+						text-align: right;
+					}
+					.ui.grid>.column{
+						padding-top: 5px;
+						padding-bottom: 5px;
 					}
 				}
 				.item.detalhes {
