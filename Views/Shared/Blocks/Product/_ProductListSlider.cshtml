@@ -1,0 +1,70 @@
+﻿@model IList<DomainProduct.Entities.Product>
+
+	
+	<script>
+		jQuery(document).ready(function ($) {
+			$('.products__carrosel').slick({
+					'dots': false,
+					'arrows': true,
+					'infinite': true,
+					'slidesToShow': 5,
+					'swipeToSlide':true,
+					'prevArrow':'<button type="button" class="slick-prev"><i class="angle left icon "></i></button>',
+					'nextArrow':'<button type="button" class="slick-next"><i class="angle right icon "></i></button>',
+					'responsive': [
+						{
+							'breakpoint': 1440,
+							'settings': {
+								'slidesToShow': 4,
+								'infinite': true
+							}
+						},
+						{
+							'breakpoint': 1200,
+							'settings': {
+								'slidesToShow': 3,
+								'infinite': true
+							}
+						},
+						{
+							'breakpoint': 768,
+							'settings': {
+								'slidesToShow': 2,
+							}
+						},
+						{
+							'breakpoint': 576,
+							'settings': {
+								'slidesToShow': 1,
+							}
+						}
+					]
+				});
+		});
+	</script>
+<div class="ui container">
+    <div class="ui grid">
+        <div class="row one column">
+            <div class="column">
+                <div class="ui doubling four cards centered products__carrosel">
+                    @foreach (DomainProduct.Entities.Product product in Model)
+                    {
+                        <!-- Page: ~/Views/Shared/Object/Product/_ProductInCard.cshtml -->
+                        @Html.Partial("Object/Product/_ProductInCard", product)
+                    }
+                </div>
+                @*{% if paginate.pages > 1 %}
+					<div class="ui centered grid ">
+						<div class="center aligned row">
+							<div class="column">
+									@Html.Partial("Parts/_Pagination")
+							</div>
+						</div>
+					</div>
+					{% endif %}*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui divider hidden"></div>
