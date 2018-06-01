@@ -49,8 +49,8 @@
                 <div class="ui doubling four cards centered products__carrosel">
                     @foreach (DomainProduct.Entities.Product product in Model)
                     {
-                        <!-- Page: ~/Views/Shared/Object/Product/_ProductInCard.cshtml -->
-                        @Html.Partial("Object/Product/_ProductInCard", product)
+                        <!-- Page: ~/Views/Shared/Object/Product/_ProductSimplesInCard.cshtml -->
+                        @Html.Partial("Object/Product/_ProductSimplesInCard", product)
                     }
                 </div>
                 @*{% if paginate.pages > 1 %}
