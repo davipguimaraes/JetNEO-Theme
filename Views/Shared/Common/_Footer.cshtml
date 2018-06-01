@@ -1,9 +1,45 @@
-﻿@{
+@{
     List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
 }
 
+<div class="ui container fluid inverted vertical segment overFooter">
+    <div class="ui container">
+		 <div class="ui grid">
+			 <div class="five wide column">
+				<h4 class="margin none">Newsletter</h4>
+				<p>Cadastre seu e-mail e receba novidades e promoções.</p>
+			 </div>
+			 <div class="eleven wide column ">
+				<div class="ui form newsletter">
+					<div class="inline fields form-wrap">
+						<div class="field">
+							<label>Nome: </label>
+							<div class="ui left icon input">
+								<input type="text" placeholder="Nome">
+								<i class="user icon"></i>
+							</div>
+						</div>
+						<div class="field">
+							<label>E-mail: </label>
+							<div class="ui left icon input">
+								<input type="text" placeholder="seu@email.com.br" id="email_news">
+								<i class="mail icon"></i>
+							</div>
+						</div>
+						<div class="field">
+							<button class="ui button inverted basic white" id="btn_news">
+								Cadastrar <i class="send outline icon"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			 </div>
+		 </div>
+	</div>
+</div>
 <div class="ui container fluid inverted vertical segment footer">
     <div class="ui container">
+
         <div class="ui four column stackable inverted equal height grid">
             <div class="ten wide table six wide computer column">
                 <div class="ui grid stackable">
@@ -23,20 +59,6 @@
 
 
             <div class="six wide computer column left aligned">
-					 <h4>Newsletter</h4>
-                <p>Cadastre seu e-mail e receba novidades e promoções.</p>
-                <div class="ui form">
-                    <div class="inline field">
-                        <div class="ui left icon action input">
-                            <i class="mail icon"></i>
-                            <input type="text" placeholder="seu@email.com.br" id="email_news">
-                            <button class="ui button inverted basic white" id="btn_news">
-                                <i class="send outline icon"></i>Cadastrar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <br />
                 <h4 class="ui inverted header">Siga nos</h4>
                 <div class="ui horizontal relaxed list social">
 
