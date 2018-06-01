@@ -1,68 +1,69 @@
-.footer-wrap{
+.footer-wrap {
 	position: absolute;
 	bottom: 0px;
-  }
+}
 
-  .footer {
-	background-color: $ascent-4-color !important;
-	padding-bottom: 20px !important;
-	margin-top:30px !important;
+.ui.inverted.segment.overFooter {
+	background-color: $ascent-3-color;
+	background:linear-gradient(135deg,rgba(147,206,222,1) 0,rgba(117,189,209,1) 41%,rgba(73,165,191,1) 100%);
+	color: #333;
 
+	.form-wrap{
+		justify-content: flex-end;
+	}
+}
+
+.footer {
+	background-color: $ascent-4-color;
+	padding-bottom: 20px;
 	.social.list {
-
-	  .button {
-		margin-left:10px;
-
-		i{
-		  font-size: 2em;
-		  line-height: 0.95em;
+		.button {
+			margin-left: 10px;
+			i {
+				font-size: 2em;
+				line-height: 0.95em;
+			}
 		}
-	  }
 	}
-  }
+}
 
-  .subFooter {
+.subFooter {
 	background-color: $ascent-5-color;
-
 	.menu_subfooter {
-	  margin-bottom: 1em;
-
-	  a.submenu {
-		padding: .42857143em 0.84285714em;
-		color: white;
-
-		&:hover {
-		  text-decoration: underline;
+		margin-bottom: 1em;
+		a.submenu {
+			padding: .42857143em 0.84285714em;
+			color: white;
+			&:hover {
+				text-decoration: underline;
+			}
 		}
-	  }
 	}
-  }
+}
 
-  .jetBrand{
+.jetBrand {
 	height: 35px;
 	text-align: center;
 	padding: 0px !important;
 	background: black !important;
-
-	img{
-	  height: 25px;
-	  margin:5px;
+	img {
+		height: 25px;
+		margin: 5px;
 	}
-  }
-#seloEbit{
+}
+
+#seloEbit {
 	display: inline-table !important;
 	float: right;
 	margin-left: 10px;
-	}
-#jetLogo {
-    height: 28px;
-
-    .cinza {
-        fill: rgba(255, 255, 255, 1);
-    }
-
-    .vermelho {
-        fill: rgba(228, 25, 32, 1);
-    }
 }
-  
+
+#jetLogo {
+	height: 28px;
+	.cinza {
+		fill: rgba(255, 255, 255, 1);
+	}
+	.vermelho {
+		fill: rgba(228, 25, 32, 1);
+	}
+}

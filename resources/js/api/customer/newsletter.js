@@ -1,46 +1,50 @@
 ﻿import {_alert, _confirm} from "../../functions/message";
 
-function RegisterNews() {
+function RegisterNews(newsData) {
     $.ajax({
         url: '/Customer/RegisterNewsletter/',
         type: 'GET',
-        data: {
-            email: $("#email_news").val()
-        },
-        dataType: 'json',
-        success: function (response) {
-            if (response.Success === true) {
-                swal({
-                    text: response.Message,
-                    type: response.type,
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK'
-                }).then(function () {
-                    $("#email_news").val("");
-                });
-            }
-            else {
-                swal({
-                    text: response.Message,
-                    type: response.type,
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK'
-                }).then(function () {
+        data: newsData,
+        dataType: 'json'
+	})
+	.done(function (response) {
+		if (response.Success === true) {
+			swal({
+				text: response.Message,
+				type: response.type,
+				showCancelButton: false,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'OK'
+			}).then(function () {
+				$("#email_news").val("");
+			});
+		}
+		else {
+			swal({
+				text: response.Message,
+				type: response.type,
+				showCancelButton: false,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'OK'
+			}).then(function () {
 
-                });
-            }
-        },
-        error: function (request, error) {
-            //console.log("Erro ao realizar cadastro de news letter");
-        }
-    });
+			});
+		}
+	}).fail(function (request, error) {
+		//console.log("Erro ao realizar cadastro de news letter");
+	});
 }
 $(document).ready(function () {
-    $(document).on("click", "#btn_news", function (event) {
-        RegisterNews()
+	var news = $('form.newsletter');
+	news.submit(false);
+
+    $('.newsletter').on("click", '#btn_news', function (event) {
+		var form = $(event.target).parents('.newsletter');
+		
+		var newsData = form.serialize();
+        RegisterNews(newsData);
     });
 });
+

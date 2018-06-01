@@ -1,4 +1,4 @@
-@{
+﻿@{
     List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
 }
 
@@ -10,29 +10,29 @@
 				<p>Cadastre seu e-mail e receba novidades e promoções.</p>
 			 </div>
 			 <div class="eleven wide column ">
-				<div class="ui form newsletter">
+				<form class="ui form newsletter">
 					<div class="inline fields form-wrap">
 						<div class="field">
 							<label>Nome: </label>
 							<div class="ui left icon input">
-								<input type="text" placeholder="Nome">
+								<input type="text" placeholder="Nome" class="nome_news" name="nome">
 								<i class="user icon"></i>
 							</div>
 						</div>
 						<div class="field">
 							<label>E-mail: </label>
 							<div class="ui left icon input">
-								<input type="text" placeholder="seu@email.com.br" id="email_news">
+								<input type="text" placeholder="seu@email.com.br" class="email_news" name="email">
 								<i class="mail icon"></i>
 							</div>
 						</div>
 						<div class="field">
-							<button class="ui button inverted basic white" id="btn_news">
+							<button type="submit" class="ui button inverted basic white " id="btn_news">
 								Cadastrar <i class="send outline icon"></i>
 							</button>
 						</div>
 					</div>
-				</div>
+				</form>
 			 </div>
 		 </div>
 	</div>
@@ -92,11 +92,8 @@
                             <i class="google plus icon"></i>
                         </a>
                     }
-
-
-
                 </div>
-                <div class="ui divider"></div>
+					 <div class="ui divider"></div>
 					<!-- ~/Views/Shared/Blocks/_BoxFacebook.cshtml -->
 					@Html.Partial("Blocks/_BoxFacebook")
             </div>
