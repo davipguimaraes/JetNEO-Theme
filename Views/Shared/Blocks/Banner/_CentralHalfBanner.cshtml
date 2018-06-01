@@ -1,16 +1,78 @@
-﻿@model IList<DomainCompany.Entities.Banner>
+﻿
+@model IList<DomainCompany.Entities.Banner>
 @if (Model != null && Model.Any())
 {
 <div class="ui container">
-    <div class="ui four images middle aligned center aligned">
-        
-            @foreach (var banner in Model)
-            {
-                <a href="@banner.Link">
-                    <img href="@banner.Link" src="@banner.NameFileImage" alt="@banner.Name" class="margin none" class="ui image">
-                </a>
-            }
-        
-    </div>
+	<div class="ui grid list banners">
+		@if(Model.Count() >= 4){
+			<!-- show 4 banners -->
+			var contador = 1 ;
+			var sizeGrid = "eight";
+			
+			foreach (var banner in Model)
+			{
+				if(contador > 2)
+				{
+					if((contador % 2) != 0)
+					{
+						sizeGrid = "ten";
+					}
+					else
+					{
+						sizeGrid = "six";
+					}
+				}
+				<div class="@sizeGrid wide column box-banner">
+					<a href="@banner.Link">
+						<img href="@banner.Link" src="@banner.NameFileImage" alt="@banner.Name" class="margin none" class="ui image">
+					</a>
+				</div>
+				contador ++;
+				if (contador > 4)
+				{
+					break;
+				}
+			}
+		} else if(Model.Count() >= 2) {
+			<!-- show 2 banners -->
+			
+				var contador = 1 ;
+				foreach (var banner in Model)
+				{
+					<div class="eight wide column box-banner">
+						<a href="@banner.Link">
+							<img href="@banner.Link" src="@banner.NameFileImage" alt="@banner.Name" class="margin none" class="ui image">
+						</a>
+					</div>
+					contador ++;
+					if (contador > 2)
+					{
+						break;
+					}
+				}
+				
+		}else {
+			<!-- mostrando 1 banner por linha banners -->
+			
+				var contador = 1 ;
+				foreach (var banner in Model)
+				{
+					<div class="column row box-banner">
+						<a href="@banner.Link">
+							<img href="@banner.Link" src="@banner.NameFileImage" alt="@banner.Name" class="margin none" class="ui image">
+						</a>
+					</div>
+					contador ++;
+					if (contador > 2)
+					{
+						break;
+					}
+				
+			}
+		}
+	</div>
 </div>
+}
+else{
+	<!-- no banners -->
 }
