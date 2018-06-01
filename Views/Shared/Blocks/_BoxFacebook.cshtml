@@ -1,0 +1,42 @@
+@{
+    List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
+}
+<div class="facebook">
+@if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+{ 
+	var link = redesSociais.Find(f => f.Identifier == "facebook").Content; 
+
+	<div class="fb-page" data-href="@link"  data-width="350" data-height="130" data-small-header="false"
+		data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+		<blockquote cite="@link" class="fb-xfbml-parse-ignore">
+			<a href="@link" target="_blank">Facebook</a>
+		</blockquote>
+	</div>
+	<div id="fb-root"></div>
+	<script>
+		$( window ).on('load',function() {
+			$('.fb-page').each(function(i,el){
+				var linkPage = $(el).attr('data-href');
+				if(linkPage != undefined ){
+					var url = new URL(linkPage);
+					url.host = "www.facebook.com";
+
+					linkPage = url.href;
+				}
+				$(el).attr('data-href',linkPage);
+				$(el).find('blockquote').attr('cite',linkPage);
+				$(el).find('a').attr('href',linkPage);
+			})
+			function loadFacebookBlock(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0';
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+			loadFacebookBlock(document, 'script', 'facebook-jssdk'); 
+
+		});
+	</script>
+}
+</div>
