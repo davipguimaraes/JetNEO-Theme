@@ -1,7 +1,7 @@
 ﻿@model DomainProduct.Entities.Category
 @{
     ViewBag.Title = Model.Name;
-    Layout = "~/Views/Shared/Base/_LayoutBreadCrumbLeftSideBar.cshtml";
+    Layout = "~/Views/Shared/Base/_LayoutBreadCrumbTopBar.cshtml";
     var returnUrl = HttpContext.Current.Request.Url.AbsolutePath;
 }
 
@@ -50,6 +50,8 @@
         </div>
     </div>
 }
+
+
 <div class="twelve wide column">
     <div class="ui grid">
         <div class="row one column">

@@ -16,31 +16,42 @@
                 </div>
                 <div class="column">
                     <div class="ui accordion" id="filtroList">
-                        @if (Model.References != null && Model.References.Count() > 0)
-                        {
-                            <!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
-                            @Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
-                        }
+							  <div class="ui grid container">
+									@if (Model.References != null && Model.References.Count() > 0)
+									{
+										<div class="tree wide column">
+											<!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
+											@Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
+										</div>
+									}
 
-                        @if (Model.Brands != null && Model.Brands.Count() > 1)
-                        {
-                            <!-- Page: ~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml -->
-                            @Html.Partial("~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml", Model.Brands)
-                        }
+									@if (Model.Brands != null && Model.Brands.Count() > 1)
+									{
+										<div class="four wide column">
+											<!-- Page: ~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml -->
+											@Html.Partial("~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml", Model.Brands)
+										</div>
+									}
 
-                        @if (Model.Categories != null && Model.Categories.Count() > 1)
-                        {
-                            <!-- Page: ~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml -->
-                            @Html.Partial("~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml", Model.Categories)
-                        }
+									@if (Model.Categories != null && Model.Categories.Count() > 1)
+									{
+										<div class="four wide column">
+											<!-- Page: ~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml -->
+											@Html.Partial("~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml", Model.Categories)
+										</div>
+									}
 
-                        @if (Model.Attributes != null && Model.Attributes.Count() > 0)
-                        {
-                            <!-- Page: ~/Views/Shared/Blocks/Atribute/_AtributesFilters.cshtml -->
-                            @Html.Partial("~/Views/Shared/Blocks/Atributes/_AtributesFilters.cshtml", Model.Attributes)
-                        }
-
-                        @Html.Partial("~/Views/Shared/Blocks/Product/_PriceFilters.cshtml")
+									@if (Model.Attributes != null && Model.Attributes.Count() > 0)
+									{
+										<div class="four wide column">
+											<!-- Page: ~/Views/Shared/Blocks/Atribute/_AtributesFilters.cshtml -->
+											@Html.Partial("~/Views/Shared/Blocks/Atributes/_AtributesFilters.cshtml", Model.Attributes)
+										</div>
+									}
+									<div class="tree wide column">
+										@Html.Partial("~/Views/Shared/Blocks/Product/_PriceFilters.cshtml")
+									</div>
+							  </div>
                     </div>
                 </div>
             </div>
