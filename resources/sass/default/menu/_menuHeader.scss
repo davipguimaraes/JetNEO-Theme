@@ -1,5 +1,5 @@
-$menuBG: darken($primary-color, 50%);
-$menuTextColor : $ascent-1-color;
+$menuBG: $primary-color;
+$menuTextColor : $ascent-5-color;
 $menuHeight: 60px;
 $menuHoverBorderColor: $secondary-color;
 .menuheader {
@@ -8,14 +8,11 @@ $menuHoverBorderColor: $secondary-color;
 	width: 100%;
 	/*Sub Classes*/
 	.ui.menu {
-		background: transparent;
 		background-color: transparent;
-		border: 0px;
-		box-shadow: none;
-		display: flex;
-		font-weight: 400;
-		min-height: 2.85714286em;
-		flex-wrap: wrap;
+		margin: 0 auto;
+		display: table;
+		width: auto;
+		border:none;
 		li {
 			&:hover,
 			&.active,
@@ -24,6 +21,10 @@ $menuHoverBorderColor: $secondary-color;
 			}
 			>.item {
 				word-wrap: normal;
+
+				&::before{
+					display: none;
+				}
 				span {
 					white-space: nowrap;
 					overflow: hidden;
@@ -52,6 +53,10 @@ $menuHoverBorderColor: $secondary-color;
 					.menu {
 						box-shadow: none;
 					}
+				}
+				&:hover{
+					background-color: lighten($menuBG,10%);
+					color:darken($menuTextColor,20%);
 				}
 			}
 		}
