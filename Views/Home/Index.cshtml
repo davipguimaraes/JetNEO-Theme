@@ -10,22 +10,14 @@
 <!-- ~/Views/Shared/Blocks/_InfoBar.cshtml -->
 @Html.Partial("Blocks/_InfoBar")
 
+<!-- ~/Views/Shared/Blocks/Banner/_CentralHalfBanner.cshtml -->
+@Html.Action("CentralHalfBanner", "Banner")
+
 <div class="featuredProducts">
     <!-- ~/Views/Shared/Blocks/Product/_FeaturedProducts.cshtml -->
     @Html.Action("FeaturedProducts", "Product")
 </div>
 
-<!-- ~/Views/Shared/Blocks/Banner/_CentralHalfBanner.cshtml -->
-@Html.Action("CentralHalfBanner", "Banner")
-
-<!-- ~/Views/Shared/Blocks/Group/_Groups.cshtml -->
-@Html.Action("Group", "Group")
-
-<!-- ~/Views/Shared/Blocks/_TopSellers.cshtml -->
-@Html.Action("TopSellers", "Product")
 
 <!-- ~/Views/Shared/Blocks/Banner/_FooterHalfBanner.cshtml -->
 @Html.Action("FooterHalfBanner", "Banner")
-
-<!-- ~/Views/Shared/Blocks/Brand/_Brands.cshtml -->
-@Html.Action("Brand", "Product")
