@@ -17,7 +17,7 @@ function RegisterNews(newsData) {
 				cancelButtonColor: '#d33',
 				confirmButtonText: 'OK'
 			}).then(function () {
-				$("#email_news").val("");
+				$('.newsletter').find('.nome_news,.email_news').val('');
 			});
 		}
 		else {
