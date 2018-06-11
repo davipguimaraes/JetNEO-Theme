@@ -42,9 +42,8 @@
     }
 }
 @section filters {
-    <div class="four wide column filterColumn">
-        <div class="row one column">
-            <!-- Page: ~/Views/Shared/Common/_FilterMenu.cshtml -->
+    <div class="one column filterColumn">
+				<!-- Page: ~/Views/Shared/Common/__FilterMenu.cshtml -->
             @Html.Action("FilterMenu", "Product")
             <div class="ui divider hidden"></div>
             @Html.Action("BannerGroup", "Banner", new { groupID = Model.IdGroup, bannerType = 'L' })
@@ -52,7 +51,7 @@
     </div>
 }
 
-<div class="twelve wide column">
+<div class="sixteen wide column">
     <div class="ui grid">
         <div class="row two column">
             <div class="mobile only left floated column">

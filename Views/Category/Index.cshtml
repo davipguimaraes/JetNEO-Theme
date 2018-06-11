@@ -40,19 +40,17 @@
     }
 }
 @section filters {
-    <div class="four wide column filterColumn">
-        <div class="row one column">
-            <!-- Page: ~/Views/Shared/Common/_FilterMenu.cshtml -->
-            @Html.Action("FilterMenu", "Product")
-            <div class="ui divider hidden"></div>
-            <!-- Page: ~/Views/Shared/Blocks/Banner/_SideHalfBanner.cshtml -->
-            @Html.Action("SideHalfBannerCategory", "Banner", new { categoryId = Model.IdCategory })
-        </div>
+    <div class="one column filterColumn">
+				<!-- Page: ~/Views/Shared/Common/__FilterMenu.cshtml -->
+				@Html.Action("FilterMenu", "Product")
+				<div class="ui divider hidden"></div>
+				<!-- Page: ~/Views/Shared/Blocks/Banner/_SideHalfBanner.cshtml -->
+				@Html.Action("SideHalfBannerCategory", "Banner", new { categoryId = Model.IdCategory })
     </div>
 }
 
 
-<div class="twelve wide column">
+<div class="sixteen wide column">
     <div class="ui grid">
         <div class="row one column">
             <div class="column right aligned right floated">
