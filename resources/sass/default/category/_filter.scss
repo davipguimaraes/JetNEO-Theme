@@ -4,6 +4,7 @@
 }
 
 .filtros {
+
   ui.dropdown {
     z-index: 0;
     .menu {
@@ -11,6 +12,10 @@
     }
   }
   .ui.accordion {
+	.ui.grid{
+		margin-left: 0;
+		margin-right: 0;
+	}
     .title {
       font-weight: 600;
       font-size: 14px;
