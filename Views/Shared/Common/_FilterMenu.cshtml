@@ -8,10 +8,8 @@
 			<div class="ui grid ">
 				@if (Model.References != null && Model.References.Count() > 0)
 				{
-					<div class="three wide column">
-						<!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
-						@Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
-					</div>
+					<!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
+					@Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
 				}
 
 				@if (Model.Brands != null && Model.Brands.Count() > 1)

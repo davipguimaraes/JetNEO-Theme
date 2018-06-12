@@ -5,8 +5,9 @@
 {
     foreach (var reference in Model)
     {
-        if (reference.Variations != null && reference.Variations.Count() > 1)
-        {
+		if (reference.Variations != null && reference.Variations.Count() > 1)
+		{
+			<div class="three wide column">
             <div class="active title" id="reference_@reference.IdReference" data-title="@reference.Name">@reference.Name<i class="dropdown icon"></i></div>
             <div class="active content">
                 @if (reference.Variations != null)
@@ -56,7 +57,8 @@
                     </div>
                 }
             </div>
-        }
+			</div>
+		}
     }
 }
 
