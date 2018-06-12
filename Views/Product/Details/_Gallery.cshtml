@@ -19,22 +19,18 @@
 
 
     function slickGallery() {
+		 var isVertical = window.matchMedia("(min-width: 769px)").matches;
         $('.car-gallery').slick({
             prevArrow: '<a class="slick-prev ui mini button basic black icon"><i class="chevron left icon"></i></a>',
             nextArrow: '<a class="slick-next ui mini button basic black icon"><i class="chevron right icon"></i></a>',
             dots: false,
-            slidesToShow: 6,
+            slidesToShow: 3,
             mobileFirst:true,
             useTransform:false,
+				vertical:isVertical,
             responsive: [
                 {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 6
-                    }
-                },
-                {
-                    breakpoint: 600,
+                    breakpoint: 992,
                     settings: {
                         slidesToShow: 4
                     }
@@ -52,10 +48,12 @@
 <div class="car-gallery thumbnails">
     @foreach (var item in Model)
     {
-        <a href="@(item.ImageHighResolution != null ? item.ImageHighResolution : "#" )" data-standard="@item.ImageDefault">
-            @* HREF = Imagem ZOOMO / Data-starndard = Imagem Sem zoom*@
-            <img src="@item.ImageDefault" onerror="imgError(this)" class="ui image small"/>
-        </a>
+		 <div class="item">
+			<a href="@(item.ImageHighResolution != null ? item.ImageHighResolution : "#" )" data-standard="@item.ImageDefault">
+					@* HREF = Imagem ZOOMO / Data-starndard = Imagem Sem zoom*@
+					<img src="@item.ImageDefault" onerror="imgError(this)" class="ui image small"/>
+			</a>
+		 </div>
     }
 </div>
 <div class="ui divider hidden"></div>
