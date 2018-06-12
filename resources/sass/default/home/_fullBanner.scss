@@ -1,0 +1,29 @@
+.car-banners{
+	.slick-dots{
+		top: 50%;
+		transform: translateY(-50%);
+		display: inline-block;
+		background: $ascent-4-color;
+		bottom: inherit;
+		width: auto;
+		right: 0;
+
+		li{
+			margin: 5px;
+			display: block;
+			
+			button:before{
+				background-color:darken($ascent-1-color,5%);
+				content: ' ';
+				margin: 4px;
+				width: 12px;
+				height: 12px;
+				border-radius: 100%;
+			}
+			
+			&.slick-active button:before{
+				background-color:$ascent-1-color;
+			}
+		}
+	}
+}
