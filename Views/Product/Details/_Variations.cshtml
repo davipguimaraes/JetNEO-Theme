@@ -10,43 +10,46 @@
 <div class="column">
     @foreach (var item in Model.OrderBy(o => o.OrdinationOfReferences).ToList())
     {
-        TempData["TotalReferencias"] = Model.Count();
+		TempData["TotalReferencias"] = Model.Count();
 
-        var type = ((LojaCorp.Controllers.Product.ProductController)this.ViewContext.Controller).GetTypeVariation(item.Variations);
+		var type = ((LojaCorp.Controllers.Product.ProductController)this.ViewContext.Controller).GetTypeVariation(item.Variations);
 
-        <h5>@item.Name</h5>
+		<div class="varicao">
 
-        if (type == LojaCorp.Control.VariationsType.COR)
-        {
-            @Html.Partial("~/Views/Product/Details/_VariationsColor.cshtml", item)
-        }
-        else if (type == LojaCorp.Control.VariationsType.IMAGEM)
-        {
-            @Html.Partial("~/Views/Product/Details/_VariationsImage.cshtml", item)
-        }
-        else if (type == LojaCorp.Control.VariationsType.DROPDOWN)
-        {
-            @Html.Partial("~/Views/Product/Details/_VariationsDropDown.cshtml", item)
-        }
-        else
-        {
-            @Html.Partial("~/Views/Product/Details/_VariationsCheckBox.cshtml", item)
-        }
+			<h5>@item.Name</h5>
 
-        if (SKUPadrao != null)
-        {
-            foreach (var itemListaVariacao in item.Variations)
-            {
-                foreach (var variacaoSKU in SKUPadrao.Variations)
-                {
-                    if (itemListaVariacao.IdVariation == variacaoSKU.IdVariation)
-                    {
-                        variacoesSelecionadas.Add(itemListaVariacao);
-                    }
-                }
-            }
-            ViewBag.VariacoesSelecionadas = variacoesSelecionadas;
-        }
+			@if (type == LojaCorp.Control.VariationsType.COR)
+			{
+					@Html.Partial("~/Views/Product/Details/_VariationsColor.cshtml", item)
+			}
+			else if (type == LojaCorp.Control.VariationsType.IMAGEM)
+			{
+					@Html.Partial("~/Views/Product/Details/_VariationsImage.cshtml", item)
+			}
+			else if (type == LojaCorp.Control.VariationsType.DROPDOWN)
+			{
+					@Html.Partial("~/Views/Product/Details/_VariationsDropDown.cshtml", item)
+			}
+			else
+			{
+					@Html.Partial("~/Views/Product/Details/_VariationsCheckBox.cshtml", item)
+			}
+
+			@if (SKUPadrao != null)
+			{
+					foreach (var itemListaVariacao in item.Variations)
+					{
+						foreach (var variacaoSKU in SKUPadrao.Variations)
+						{
+							if (itemListaVariacao.IdVariation == variacaoSKU.IdVariation)
+							{
+									variacoesSelecionadas.Add(itemListaVariacao);
+							}
+						}
+					}
+					ViewBag.VariacoesSelecionadas = variacoesSelecionadas;
+			}
+		</div>
     }
 </div>
 

@@ -1172,7 +1172,7 @@ function MontarHtmlVariacao(seletor, posicao, ListaReferenciaJson, listaReferenc
 
 function MontaTipoCor(skU, seletor_produto, reference, variation, variacoes_selecionadas_bkp, flag_buscar_sku, posicao) {
     var html      = "";
-    var classeBtn = "ui basic button radio variacao cor";
+    var classeBtn = "circular ui basic button radio variacao cor";
 
     if (flag_buscar_sku === true) {
         if (skU.stock <= 0 || skU.visible === false) {
@@ -1186,10 +1186,12 @@ function MontaTipoCor(skU, seletor_produto, reference, variation, variacoes_sele
     }
     if (validaSejaEstaSelecionado(seletor_produto, reference.IdReference, variation.IdVariation, variacoes_selecionadas_bkp)) {
         classeBtn += " selecionado";
-    }
+	}
+	html += "<span class=\"cor\">";
     html += "<button class='" + classeBtn + "' style='background-color: " + variation.Color + " !important; margin: 0em 0.50em 0em 0em;' data-tooltip=" + variation.Name + " value='" + reference.IdReference + "-" + variation.IdVariation + "' data-id-reference='" + reference.IdReference + "' data-tipo='color' data-order='" + posicao + "'></button>";
     html += "<div class='ui checkbox hideme'><input type='radio' name='radio' value=" + variation.Color + ">";
     html += "<label></label></div>";
+	html += "</ span>";
     return html;
 }
 
