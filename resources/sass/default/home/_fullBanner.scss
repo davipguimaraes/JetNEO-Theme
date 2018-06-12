@@ -25,5 +25,36 @@
 				background-color:$ascent-1-color;
 			}
 		}
+		
+		@media screen and (max-width: $mobile-bp) {
+			background-color: transparent;
+			position: static;
+			transform: none;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+
+			li{
+				margin: 0 0 10px;
+				display: flex;
+				flex: 1;
+				align-items: center;
+				&.slick-active{
+					button{
+						background-color:$ascent-1-color;
+						&:before{ background-color: transparent }
+					}
+				}
+				button{
+					width: 100%;
+					background: $ascent-4-color;
+					&:before{
+						position: static;
+						background-color: transparent
+					}
+				}
+			}
+			
+		}
 	}
 }
