@@ -20,12 +20,12 @@
                     </div>
                 </div>
                 <div class="ui right aligned six wide mobile five wide tablet four wide computer column">
-                    <div id="cartButton" class="ui labeled button cartbutton mini-cart no margin bottom" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
-                        <div class="ui blue button ">
-                            <i class="cart icon"></i>
+                    <div id="cartButton" class="cartbutton mini-cart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                        <div class=" ">
                             <span>@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span>
+                            <i class="cart icon huge"></i>
                         </div>
-                        <a class="ui basic left pointing blue label" id="total_itens_card">
+                        <a class="mini-cart-count" id="total_itens_card">
                             @{
                                 if (Session["EventList"] == null)
                                 {
@@ -35,7 +35,6 @@
 	                                @Html.Action("TotalItensList", "EventList")
                                 }
                             }
-                            
                         </a>
                     </div>
                 </div>
