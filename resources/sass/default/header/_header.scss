@@ -32,12 +32,29 @@ headlogo {
 		}
 	}
 	.cartbutton {
-		.ui.basic.primary.button {
-			>span {
-				@media screen and (max-width: $mobile-bp) {
-					display: none;
-				}
+		color: white;
+		position: relative;
+		.mini-cart-count{
+			position: absolute;
+			z-index: 1;
+			font-size: 10px;
+			display: inline-block;
+			background: white;
+			border: solid 1px $ascent-1-color;
+			padding: 0.25em 0.75em;
+			width: 2.5em;
+			text-align:  center;
+			top: -3px;
+			right: -5px;
+			border-radius: 100%;
+		}
+		span{
+			@media screen and (max-width: $mobile-bp) {
+				display: none;
 			}
+		}
+		&:focus{
+			outline: none;
 		}
 	}
 }
