@@ -66,5 +66,7 @@ mix.js('resources/js/app.js', 'assets/js')
     .extract(['jquery', 'slick-carousel', 'sweetalert2', 'easyzoom', 'jquery-datepicker'])
     .version();
 
-mix.sass('resources/sass/style.scss', 'assets/css')
-    .sourceMaps();
+mix.sass('resources/sass/base.scss', 'assets/css')
+	.sourceMaps();
+mix.sass('resources/sass/theme.scss', 'assets/css')
+	.sourceMaps();
