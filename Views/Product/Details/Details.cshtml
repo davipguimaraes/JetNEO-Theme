@@ -155,7 +155,7 @@
             </div>
 
             <!-- COMEÇO MARCA MOBILE-->
-            <div class="mobile only column">
+            <div class="column">
                 <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
                 @if (Model.Brand != null)
                 {
@@ -253,32 +253,6 @@
             <!-- COMEÇO INFORMAÇÕES DO PRODUTO-->
             <div class="sixteen wide mobile four wide computer column infoProduto">
                 <div class="ui grid">
-                    <div class="computer only row product information">
-                        <div class="column">
-                            <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
-                            @if (@Model.Brand != null)
-                            {
-                                <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
-                            }
-                            else
-                            {
-                                <h5 itemprop="productBrand" class="marcaProduto"></h5>
-                            }
-                            <div class="ui one column grid">
-                                <div class="column">
-                                    <h6 itemprop="productID" class="codProduto">@Model.Code</h6>
-												<div class="avaliacao">
-														<div class="ui tiny star rating" data-rating="@Model.Rate.Value"></div>
-														<div id="avaliacoes">
-															<a href="#avaliacoes">
-																@(Model.ProductRatings != null ? Model.ProductRatings.Count() : 0) avaliações
-															</a>
-														</div>
-												</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--COMEÇO DICA DE COMPRA-->
                     <div id="dica_compra_partial">
                         @Html.Action("BuyingTips", "Product", new { productID = @Model.IdProduct, skuID = SKUPadrao != null ? SKUPadrao.IdSku : 0 })
@@ -290,8 +264,7 @@
                             <div class="ui grid">
                                 <!--COMEÇO VARIAÇÔES-->
                                 <div class="one column row">
-                                    @if (!Model.FlagExhausted)
-                                    {
+                                    @if (!Model.FlagExhausted) {
                                         @Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao, ListaSku = Model.SKUs })
                                     }
                                 </div>
@@ -468,6 +441,24 @@
             <!-- FIM INFORMAÇÕES DO PRODUTO-->
         </div>
 
+
+        <div class="row">
+            @if (Model.AlsoProductsPurchased != null && Model.AlsoProductsPurchased.Count > 0)
+            {
+                @Html.Partial("~/Views/Product/Details/_AlsoPurchased.cshtml", Model.AlsoProductsPurchased)
+            }
+        </div>
+
+        <!--FIM DESCRIÇÃO-->
+        @if (!Model.FlagExhausted)
+        {
+            <div class="row" id="buy-together">
+                @if (Model.BuyTogether != null && Model.BuyTogether.Count > 0 && Session["EventList"] == null)
+                {
+                    @Html.Partial("~/Views/Product/Details/_BuyTogether.cshtml", Model)
+                }
+            </div>
+        }
 
         <div class="ui divider hidden"></div>
         <!--COMEÇO DESCRIÇÃO-->
@@ -664,22 +655,6 @@
 						</div>
 					</div>
 				</div>
-        </div>
-        <!--FIM DESCRIÇÃO-->
-        @if (!Model.FlagExhausted)
-        {
-            <div class="row" id="buy-together">
-                @if (Model.BuyTogether != null && Model.BuyTogether.Count > 0 && Session["EventList"] == null)
-                {
-                    @Html.Partial("~/Views/Product/Details/_BuyTogether.cshtml", Model)
-                }
-            </div>
-        }
-        <div class="row">
-            @if (Model.AlsoProductsPurchased != null && Model.AlsoProductsPurchased.Count > 0)
-            {
-                @Html.Partial("~/Views/Product/Details/_AlsoPurchased.cshtml", Model.AlsoProductsPurchased)
-            }
         </div>
         <div class="row one column">
             <div class="column">
