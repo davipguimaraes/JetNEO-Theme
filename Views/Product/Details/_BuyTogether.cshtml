@@ -18,78 +18,60 @@
         <div class="row horizontal divided">
             <div class="twelve wide computer column">
                 <div class="ui items relaxed divided produtos compre junto">
-                    <div class="item product-grid">
-                        <div class="ui image medium">
-                            @if (@Model.ImageHome != null)
-                            {
-                                <img src="@Model.ImageHome" alt="@Model.Name"  onerror="imgError(this)">
-                            }
-                            else
-                            {
-                                <img src="@Model.ProductImages.FirstOrDefault().ImageDefault" alt="@Model.Name"  onerror="imgError(this)">
-                            }
-                        </div>
-                        <div class="content">
-                            <a href="" class="header">@Model.Name</a>
-                            <div class="meta">
-                                @if (@Model.Brand != null)
-                                {
-                                    <span>@Model.Brand.Name</span>
-                                }
-                                <h4 class="margin medium top" id="price-buy-together">
-                                    @if (Model.HaveSku)
-                                    {
-                                        if (SKUPadrao.PricePromotion != null && SKUPadrao.PricePromotion > 0)
-                                        {
-                                            @SKUPadrao.PricePromotion.Value.ToString("C")
-                                        }
-                                        else
-                                        {
-                                            @SKUPadrao.Price.ToString("C")
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (Model.PricePromotion != null && Model.PricePromotion > 0)
-                                        {
-                                            @Model.PricePromotion.Value.ToString("C")
-                                        }
-                                        else
-                                        {
-                                            @Model.Price.ToString("C")
-                                        }
-                                    }
-                                </h4>
-                            </div>
-                            <div class="description">
-                                @if (Model.AvailableReferences != null)
-                                {
-                                    @Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao })
-                                }
-                            </div>
-                            <div class="extra"></div>
-                        </div>
-                    </div>
+						<div class="item ui segment product-grid">
+							<div class="ui image small">
+								@if (@Model.ImageHome != null){
+									<img src="@Model.ImageHome" alt="@Model.Name"  onerror="imgError(this)">
+								}
+								else{
+									<img src="@Model.ProductImages.FirstOrDefault().ImageDefault" alt="@Model.Name"  onerror="imgError(this)">
+								}
+							</div>
+							<div class="informations">
+								<div class="meta">
+									<a href="" class="header">@Model.Name</a>
+									@if (@Model.Brand != null) {
+											<p>@Model.Brand.Name</p>
+									}
+									<h4 class="margin medium top" id="price-buy-together">
+											@if (Model.HaveSku){
+												if (SKUPadrao.PricePromotion != null && SKUPadrao.PricePromotion > 0){
+													@SKUPadrao.PricePromotion.Value.ToString("C")
+												}
+												else {
+													@SKUPadrao.Price.ToString("C")
+												}
+											}
+											else {
+												if (Model.PricePromotion != null && Model.PricePromotion > 0) {
+													@Model.PricePromotion.Value.ToString("C")
+												}
+												else {
+													@Model.Price.ToString("C")
+												}
+											}
+									</h4>
+								</div>
+							</div> 
+							<div class="description">
+								@if (Model.AvailableReferences != null)  {
+										@Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao })
+								}
+							</div>
+							<input type="hidden" value="" name="buy-together-skus" id="buy-together-skus" />
+						</div>
 
-                    <input type="hidden" value="" name="buy-together-skus" id="buy-together-skus" />
 
-                    @foreach (var item in Model.BuyTogether)
-                    {
+                    @foreach (var item in Model.BuyTogether) {
                         string variacaoSelecionada = string.Empty;
 
-                        if (item.SKUs != null && item.SKUs.Any())
-                        {
+                        if (item.SKUs != null && item.SKUs.Any()) {
                             var skuPadraoByTogether = item.SKUs.FirstOrDefault(m => m.Standard == true) != null ? item.SKUs.FirstOrDefault(m => m.Standard == true) : item.SKUs.FirstOrDefault(m => m.Stock > 0);
-                            if (skuPadraoByTogether != null)
-                            {
-                                if (item.AvailableReferences != null && item.AvailableReferences.Count > 0)
-                                {
-                                    foreach (var referencias in item.AvailableReferences.OrderBy(o => o.OrdinationOfReferences).ToList())
-                                    {
-                                        foreach (var variacoes in referencias.Variations)
-                                        {
-                                            if (skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation).Count > 0)
-                                            {
+                            if (skuPadraoByTogether != null) {
+                                if (item.AvailableReferences != null && item.AvailableReferences.Count > 0) {
+                                    foreach (var referencias in item.AvailableReferences.OrderBy(o => o.OrdinationOfReferences).ToList()) {
+                                        foreach (var variacoes in referencias.Variations) {
+                                            if (skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation).Count > 0) {
                                                 var referencia_selecionada = skuPadraoByTogether.Variations.FindAll(r => r.IdVariation == variacoes.IdVariation);
                                                 variacaoSelecionada += referencias.IdReference.ToString() + '-' + referencia_selecionada.FirstOrDefault().IdVariation.ToString() + ',';
                                             }
@@ -107,52 +89,53 @@
 
                         int total_variacoes = item.AvailableReferences != null ? item.AvailableReferences.Count() : 0;
 
-                        <div class="item buy-together" id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                            <div class="ui image small">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
-                                    <img src="@item.ImageHome" alt=""  onerror="imgError(this)">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">@item.Name</a>
-                                <div class="meta">
-                                    @if (@Model.Brand != null)
-                                    {
-                                        <span>@Model.Brand.Name</span>
-                                    }
-                                    else
-                                    {
-                                        <span></span>
-                                    }
-                                    @{
-                                        decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
-                                    }
+								<div class="item ui segment  buy-together " id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
+									<div class="ui image tiny">
+										<a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
+											<img src="@item.ImageHome" alt=""  onerror="imgError(this)">
+										</a>
+									</div>
+									<div class="content informations">
+										<div class="ui grid two columns">
+											<div>
+												<a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">@item.Name</a>
+												<div class="meta">
+													<span>
+														@if (@Model.Brand != null) {
+																@Model.Brand.Name
+														}
+													</span>
+													@{
+															decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
+													}
 
-                                    @if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0)
-                                    {
-                                        <h4 class="margin medium top" id="@item.IdProduct-price-product-buy-together">@preco_final.ToString("C")</h4>
-                                    }
-                                    else
-                                    {
-                                        <h4 class="margin medium top" id="@item.IdProduct-price-product-buy-together"></h4>
-                                    }
-                                </div>
-                                <div class="description" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                                    @if (@item.AvailableReferences != null)
-                                    {
-                                        @Html.Action("Variations", "Product", new { reference = @item.AvailableReferences, ListaSku = @item.SKUs })
-                                    }
-                                </div>
-                            </div>
-                            <div class="extra">
-                                <button class="ui circular icon big toggle button compre junto" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
-                                    <i class="plus icon"></i>
-                                </button>
-                            </div>
+													<h4 class="margin medium top" id="@item.IdProduct-price-product-buy-together">
+														@if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0) {
+															@preco_final.ToString("C")
+														}
+													</h4>
+													
+												</div>
+											</div>
+
+											<div class="description" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
+												@if (@item.AvailableReferences != null)
+												{
+														@Html.Action("Variations", "Product", new { reference = @item.AvailableReferences, ListaSku = @item.SKUs })
+												}
+											</div>
+										</div>
+
+									</div>
+									<div class="extra">
+										<button class="ui circular icon big toggle button compre junto" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
+											<i class="plus icon"></i>
+										</button>
+									</div>
+
 
 
                             <!-- COMEÇO VARIÁVEIS PRODUTO - COMPRE JUNTO-->
-
 
                             @{
                                 string ListaSKU = "";
@@ -173,9 +156,7 @@
                             <!-- FIM VARIÁVEIS PRODUTO - COMPRE JUNTO-->
 
                         </div>
-                                }
-
-
+                     }
                 </div>
             </div>
             <div class="ui rail four wide computer column compre junto">
@@ -243,8 +224,7 @@
                         </tbody>
                     </table>
 
-                    @if (Model.HaveSku)
-                    {
+                    @if (Model.HaveSku) {
                         if (SKUPadrao.Stock > 0)
                         {
                             <a href="" class="ui big button green fluid buy-together" id="btn_comprejunto" onclick="return false">
@@ -260,8 +240,7 @@
                             </a>
                         }
                     }
-                    else
-                    {
+                    else {
                         if (Model.Stock > 0)
                         {
                             <a href="" class="ui big button green fluid buy-together" id="btn_comprejunto" onclick="return false">
