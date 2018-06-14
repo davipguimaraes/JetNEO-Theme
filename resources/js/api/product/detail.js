@@ -591,16 +591,15 @@ function AtualizarGradeCompreJunto(jsonSKU, productID, referencias) {
     $.ajax({
         url: '/Product/GetProductImages?id=' + productID + '&referencias=' + referencias,
         type: 'GET',
-        success: function (result) 
-        {
-            var listProducts = document.getElementById("buy-together").getElementsByClassName("item buy-together");
-            for (var i = 0; i < listProducts.length; i++) 
-            {
-                if(listProducts[i].dataset.id == id)
-                {
-                    document.getElementById("buy-together").getElementsByClassName("ui image small")[i].children[0].children[0].src = result.lista[0].ImageDefault;
-                }
-            }
+        success: function (result) {
+			var listProducts = $("#buy-together .item.buy-together");
+			listProducts.each(function(i,el){
+
+				if(listProducts[i].dataset.id == id){
+					$(el).find('img').attr('src',result.lista[0].ImageDefault);
+				}
+			});
+            
         }
     });
 
